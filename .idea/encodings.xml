@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding" defaultCharsetForPropertiesFiles="UTF-8">
+    <file url="file://$PROJECT_DIR$/PyTorch/models/data/vocab100.csv" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/PyTorch/models/embeddings.py" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/PyTorch/models/lstm/ws.pkl" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/main.py" charset="UTF-8" />
+    <file url="PROJECT" charset="UTF-8" />
+  </component>
+</project>

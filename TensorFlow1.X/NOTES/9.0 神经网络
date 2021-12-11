@@ -1,0 +1,18 @@
+人工神经网络(Artificial Neural Network, 简写为ANN):
+    分为  输入层 隐层 输出层
+    1. softmax回归
+        logits加上softmax映射 - 多分类问题
+    2. 损失函数
+        * 交叉熵损失
+        * 总损失 - 求平均
+        * 最小二乘法 - 线性回归的损失 - 均方误差
+    3. 优化损失函数
+
+    * API:
+        tf.nn.softmax_cross_entropy_with_logits(labels=None, logits=None, name=None)
+            - 计算logits和labels之间的交叉损失熵
+            - labels: 标签值(真实值)
+            - logits: 样本加权后的值
+            - return: 返回损失列表
+        tf.reduce_mean(input_tensor)
+            - 计算张量的尺寸的元素平均值

@@ -1,0 +1,43 @@
+Tensor(张量):
+    1. 张量
+        1.1 张量的类型
+        1.2 张量的阶
+    2. 创建张量的指令
+        2.1 固定值张量
+        2.2 随机值张量
+    3. 张量的变换
+        3.1 类型改变
+        3.2 形状改变
+    4. 张量的数学运算
+
+    * 存储方式:
+        张量 - n维数组
+        标量 - 一个数字   0阶张量
+        向量 - 一维数组   1阶张量
+        矩阵 - 二维数组   2阶张量
+
+    * 张量的类型: 默认tf.float32
+        整形 tf.int32
+        浮点型 tf.float32
+
+    * 张量的变换:
+        类型修改:
+            - tf.string_to_number(string_tensor, out_type=None, name=None)
+            - tf.to_double(x, name='ToDouble')
+            - tf.to_float(x, name='ToFloat')
+            - tf.to_bfloat16(x, name='ToBFloat16')
+            - tf.to_int32(x, name='ToInt32')
+            - tf.to_int64(x, name='ToInt64')
+            - tf.cast(x, dtype, name=None)   通用类型转换
+
+        形状改变:
+            静态形状: 初始创建张量时的形状
+                - tensor.set_shape()
+                注: 只有在形状没有完全固定下来的情况下才能改变静态形状 a-p = tf.placeholder(dtype=tf.float32, shape=[None, None])  # 占位张量
+
+            动态形状: 已经确定形状的张量
+                - tf.reshape(tensor, shape)
+                注: 必须保证张量的元素个数前后一致, 即shape各值的乘积不变
+
+    * 张量的数学运算:
+        to web of https://www.tensorflow.org/api_docs/python/tf

@@ -1,0 +1,49 @@
+案例: 线性回归案例
+    回顾:
+        1. 构建模型
+            y = w1x1 + w2x2 + ... + wnxn + b
+        2. 构造损失函数
+            均方误差
+        3. 优化损失
+            梯度下降
+
+    步骤:
+        1. 准备数据
+            x - 特征值 (100, 1)
+            y_true - 真实值  (100, 1)
+            y_true = 0.8x + 0.7
+            1.1 构建模型
+            y_predict = tf.matmul(x, weights) + bias
+        2. 构建损失函数
+            error = tf.reduce_mean(tf.square(y_predict - y_true))
+        3. 优化损失
+            optimizer = tf.train.GradientDescentOptimizer(learning_rate=0.01).minimize(error)
+
+        优化:
+            1. 显示变量变化状况
+                1) 收集变量
+                    - tf.summary.scalar(name='', tensor)
+                    name: 变量的名字
+                    tensor: 值
+                    - tf.summary.histogram(name='', tensor)
+                    收集高纬度的变量参数
+                    - tf.summary.image(name='', tensor)
+                    收集输入的图片张量能显示图片
+                2) 合并变量写入事件文件
+                    - merged = tf.summary.merge_all()
+                    - 运行合并: summary = sess.run(merged) 每次迭代都需运行
+                    - 添加: FileWriter.add_summary(summary, i), i表示第几次的值
+
+            2. 增加命名空间
+            3. 模型的保存和加载
+                - tf.train.Saver(var_list=None, max_to_keep=5)
+                    - 保存和加载模型 (文件格式: checkpoint文件, 后缀名ckpt)
+                    - var_list: 指定将要保存和还原的变量, 它可以作为一个dict或者列表传递
+                    - max_to_keeep: 指示要保留的最近检查点文件的最大数量. 创建新文件时, 会删除旧文件. 如果无或0, 则保留所有检查点文件.
+                                    默认为5(即保留最新的5各检查点文件)
+                - 用法:
+                    1) 实例化saver
+                    2) 保存
+                        saver.save(sess, path)
+                    3) 加载
+                        saver.restore(sess, path)

@@ -1,0 +1,19 @@
+二进制数据:
+    1. CIFAR10二进制数据集介绍
+        每3073个字节是一个样本
+        1个目标值 + 3072像素(1024红色通道, 1024绿色通道, 1024蓝色通道)
+    2. CIFAR10 二进制数据读取
+        流程分析:
+            1) 构造文件名队列
+            2) 读取与解码
+                reader = tf.FixedLengthRecordReader(3073)
+                key, value = reader.read(file_queue)
+                decoded = tf.decode_raw(value, tf.uint8)
+                对tensor对象进行切片
+                label
+                image(3072字节 = 1024r + 1024g +  1024b)
+                [[[32 * 32 r]],
+                 [[32 * 32 g]],
+                 [[32 * 32 b]]]
+                shape = (3, 32, 32) = [channels, height, width] ==> [height, width, channnels]
+            3) 批处理

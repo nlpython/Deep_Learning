@@ -1,0 +1,20 @@
+深度学习介绍:
+    与机器学习的区别:
+        1. 深度学习不需要特征工程
+        2. 深度学习数据需求量大
+        3. 神经网络
+
+    应用场景:
+    框架:
+        1. Caffe
+        2. TensorFlow
+        3. Torch
+        4. MXNet
+        5. Theano
+        6. PyTorch
+
+    * TensorFlow特点:
+        1. 高度灵活
+        2. 语言多样
+        3. 设备支持
+        4. Tensorboard可视化

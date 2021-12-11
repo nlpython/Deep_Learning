@@ -1,0 +1,15 @@
+OP(变量):
+    特点:
+        - 存储持久化
+        - 可修改值
+        - 可指定被训练
+    作用: 存储模型参数
+
+    * 创建变量:
+        - tf.Variable(inital_value=None, trainable=True, collections=None, name=None)
+            - inital_value: 初始化的值
+            - trainable: 是否被训练(即在训练中是否改变)
+            - collections: 新变量将添加到列出的图的集合中collections, 默认为
+                           [GraphKeys.GLOBAL_VARIABLES], 如果trainable是True变量也别添加到图
+                           形集合GraphKeys.GLOBAL_VARIABLES
+        - 变量需要显示初始化, 才能运行值

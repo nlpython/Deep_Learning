@@ -1,0 +1,59 @@
+IO:
+    三种方式:
+        占位符 & feed_dict搭配使用
+        QueueRunner: 基于队列的输入管道从TensorFlow图形开头的文件中读取数据.
+            通用文件读取流程
+            图片
+            二进制
+            TFRecords
+
+    流程:
+        多线程 + 队列
+        1) 构造文件名队列
+            file_queue = tf.train_input_producer(string_tensor, shuffle=True)
+                - string_tensor: 含有文件名 + 路径的一阶张量
+                - num_epochs: 过几遍数据, 默认无限过数据
+                - return: 文件队列
+        2) 读取与解码
+
+            文本文件: tf.TextLineReader
+                - 阅读文本文件逗号分隔值(CSV)格式, 默认按行读取
+                - return: 读取器实例
+                解码: tf.decode_csv
+            图片文件: tf.WholeFileReader
+                - return: 读取器实例
+                解码: tf.image.decode_jpeg(contents)
+                    - 将JPEG编码的图像解码为unit8张量
+                    - return: unint8张量, 3-D形状[height, width, channels]
+                    tf.image.decode_png(contents)
+            二进制文件: tf.FixedLengthRecordReader(record_bytes)
+                - 要读取每个记录是固定数量字节的二进制文件
+                - record_bytes: 整形, 指定每次读取(一个样本)的字节数
+                - return: 读取器实例
+                解码: tf.decode_raw
+            TFRecords文件: tf.TFRecordReader
+                - return: 读取器实例
+                key, value = 读取器.read(file_queue)
+                - key: 文件名
+                - value: 一个样本
+        3) 批处理队列
+            tf.train.batch(tensor, batch_size, num_threads=1, capacity=32, name=None)
+                - 指定大小(个数)的张量
+                - tensors: 可以是包含张量的列表, 批处理的内容放到列表当中
+                - batch_size: 从队列中读取的批处理大小
+                - num_threads: 进入队列的线程数
+                - capacity: 整数, 队列种元素的最大数量
+                - return: tensors
+            tf.train.shuffle_batch
+        4) 手动开启线程
+            tf.train.start_queue_runners(sess=None, coord=None)
+                - 收集图中所有的队列线程, 默认同时启动线程
+                - sess: 所在的会话
+                - coord: 线程协调器
+                - return: 返回所有线程
+            tf.train.Coordinator()
+                - 线程协调员, 对线程进行管理和协调
+                - request_stop(): 请求停止
+                - should_stop(): 询问是否结束
+                - join(thread=None, stop_grace_period_secss=120); 回收线程
+                - return: 线程协调实例

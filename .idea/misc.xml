@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectPlainTextFileTypeManager">
+    <file url="file://$PROJECT_DIR$/TensorFlow1.X/Projects/Mnist/README" />
+  </component>
+  <component name="ProjectRootManager" version="2" project-jdk-name="Python 3.6 (tensorflow)" project-jdk-type="Python SDK" />
+  <component name="PythonCompatibilityInspectionAdvertiser">
+    <option name="version" value="3" />
+  </component>
+  <component name="com.itcodebox.notebooks.projectservice.ProjectUIState">
+    <option name="notebookPaneVisible" value="true" />
+    <option name="chapterPaneVisible" value="true" />
+    <option name="notePaneVisible" value="true" />
+  </component>
+</project>

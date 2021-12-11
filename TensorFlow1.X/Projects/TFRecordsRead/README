@@ -1,0 +1,10 @@
+TFRecords:
+    TFRecords文件是一种二进制文件, 能将一个样本的目标值和特征值绑定在一起
+
+    使用步骤:
+        1) 获取数据
+        2) 将数据填入到Example协议内存块(protocol buffle)
+        3) 将协议内存快序列化为字符串, 并且通过tf.python_io.TFRecordWriter写入到TFRecords文件.
+            文件格式: *.tfrecords
+
+    API:

@@ -1,0 +1,26 @@
+API:
+    * 基础API:
+        - tf.app
+            这个模块相当于TensorFlow进行的脚本提供一个main函数入口, 可以定义脚本运行的flags
+        - tf.gfile
+            这个模块提供了一组文件操作函数
+        - tf.summary
+            这个模块用来生成TensorBoard可用的统计日志, 目前Summary主要提供了4种类型:
+            audio, image, histogram, scalar
+        - tf.python_io
+            用来读写TFRecords文件
+        - tf.nn
+            这个模块提供了一些构建神经网络的底层函数. TensorFlow构建网络的核心模块.
+            其中包含了添加各种层的函数, 比如添加卷积层, 池化层等.
+
+    * 高级API:
+        - tf.keras
+            - Keras本来是一个独立的深度学习库, tensorflow将其学习过来, 增加这部分模块用于快速构建模型.
+        - tf.layers
+            - 高级API, 以更高级的概念层来定义一个模型, 类似tf.keras
+        - tf.contrib
+            - tf.contrib.layers提供够将计算图种的网络层, 正则化, 摘要操作, 是构建计算图的高级
+              操作, 但是tf.contrib包含不稳定和实验代码
+        - tf.estimator
+            - 一个estimator相当于Model + Training + Evaluate的合体. 在模块中, 已经实现了几种简单的分类器和回归器,
+              包括: Baseline, Learning和DNN. 这里的DNN的网络, 只是全连接网络, 没有提供卷积层等.

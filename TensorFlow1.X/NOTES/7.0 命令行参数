@@ -1,0 +1,13 @@
+命令行参数:
+    1. tf.app.flags, 它支持应用从命令行接收参数, 可以用来指定集群配置.
+       在tf.app.flags下面有各种定义参数的类型.
+       - DEFINE_string(flag_name, default_value, docstring)
+       - DEFINE_integer(flag_name, default_value, docstring)
+       - DEFINE_boolean(flag_name, default_value, docstring)
+       - DEFINE_float(flag_name, default_value, docstring)
+
+       例:
+           tf.app.flags.DEFINE_integer('max_step', 0, '训练模型的步数')
+
+    2. FLAGS = tf.app.flags.FLAGS
+       通过FLAGS.max_step调用命令行种传过来的参数

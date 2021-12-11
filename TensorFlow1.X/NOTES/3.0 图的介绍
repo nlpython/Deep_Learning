@@ -1,0 +1,15 @@
+图与TensorBoard(code in 1.0):
+    1. 什么是图结构:
+        数据(Tensor) + 操作(Operation)
+
+    2. 图的相关操作:
+        1) 默认图:
+            查看方法:
+                * 调用方法: tf.get_default_graph()
+                * 查看属性: tf.graph
+        2) 创建图
+
+    3. 可视化学习
+        1) 数据序列化 - events文件
+            tf.summary.FileWriter(file_path, grap=sess.graph)
+        2) 启动TensorBoard

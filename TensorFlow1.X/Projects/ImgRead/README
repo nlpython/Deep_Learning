@@ -1,0 +1,37 @@
+图片数据:
+    1. 基本知识:
+        特征抽取:
+            文本 - 数值(二维数组 shape(n_samples, n_features))
+            字典 - 数值(二维数组 shape(n_samples, n_features)) ont-hot编码
+            图片 - 数值(三维数组 shape(长度, 宽度, 通道数))
+                组成图片的最基本单位是像素
+
+            图片三要素:
+                灰度图[长, 宽, 1]
+                    每一个像素点是[0, 255]的数
+                彩色图[长, 宽, 3]
+                    每个像素点用三个[0, 255]的数表示
+
+    2. 张量形状
+        Tensor(指令名称, shape, dtype)
+        一张图片 shape = (height, width, channels)
+        多张图片 shape = (batch, height, width, channels)
+
+    3. 图片特征值处理
+         1) 将图片缩放到统一大小
+            tf.image.resize_images(images, size)
+                - 缩放图片
+                - images: 4-D形状[batch, height, width, channels]或3-D形状的张量[height, width, channels]的图片数据
+                - size: 1-D int32张量: new_height, new_width, 图像的新尺寸
+                - 返回4-D格式或者3-D格式图片
+
+    4. 数据格式
+        - 存储: unit8(节约空间)
+        - 矩阵计算: float32(提高精度)
+
+
+    * 案例: 狗图片读取
+        1) 构造文件名队列
+        2) 读取与解码
+            使样本的形状和类型统一
+        3) 批处理
